@@ -27,9 +27,18 @@ public class Main {
 		
 		Correct checker = new Correct();
 		
-		checker.input(user.packNumber, user.cardNumber);
 		
-		System.out.println(checker.correctNumber);
+		checker.input(user.packNumber, user.cardNumber);
+		checker.readFromFile();
+		checker.compare();
+		Scorekeeping scoreObj = new Scorekeeping();
+		
+		scoreObj.cardsScore(checker.correctNumber);
+		
+		System.out.println("Your entire memorization session was " + test.seconds + " seconds long.");
+		System.out.println("You only got " + checker.correctNumber + " correct out of " + (52 * user.packNumber));
+		System.out.println("Your overall score is: " + scoreObj.score);
+		checker.clear();
 
 	}
 

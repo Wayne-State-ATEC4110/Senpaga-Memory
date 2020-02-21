@@ -2,6 +2,7 @@
 public class StopWatch {
 
 	long begin; 
+	double seconds;
 	
 	public void initialize() {
         begin = System.currentTimeMillis();
@@ -11,5 +12,8 @@ public class StopWatch {
 	        long now = System.currentTimeMillis();
 	        //System.out.println((now - begin) / 1000.0 + " seconds");
 	        double stopTime = (now - begin) / 1000.0;
+	        this.seconds = stopTime;
 	    }
+	 
+	
 }
