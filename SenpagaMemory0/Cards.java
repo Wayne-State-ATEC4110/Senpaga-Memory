@@ -1,3 +1,5 @@
+//author: Ervin Colston
+
 //This is the cards class.  This class randomizes the cards, initializes the card packs, and provides a background timer.
 
 import java.util.Arrays;
