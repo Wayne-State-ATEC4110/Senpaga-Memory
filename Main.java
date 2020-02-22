@@ -1,10 +1,9 @@
-//this the file from which we will use as a general base for our program.
-
 
 public class Main {
-
+	//Main class to test the number game
 	public static void main(String[] args) {
-		System.out.println("Hello World");
+		NumberGame game = new NumberGame();
+		game.startGame();
 
 	}
 
