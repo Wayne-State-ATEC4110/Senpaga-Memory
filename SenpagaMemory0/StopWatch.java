@@ -1,4 +1,4 @@
-
+//author: Ervin Colston
 public class StopWatch {
 
 	long begin; 
