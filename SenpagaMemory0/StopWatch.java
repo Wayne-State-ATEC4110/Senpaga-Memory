@@ -1,3 +1,5 @@
+//author: Ervin Colston
+
 
 public class StopWatch {
 
