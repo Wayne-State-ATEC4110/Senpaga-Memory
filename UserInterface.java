@@ -22,6 +22,7 @@ public class UserInterface extends WordMemorization{
 		System.out.println("\t\tQuit to Main Menu ----------------------------> 8");
 		
 		int choice, startIndex, limit;
+		String fileName;
 		Scanner scan = new Scanner(System.in);
 		
 		do {
@@ -38,7 +39,9 @@ public class UserInterface extends WordMemorization{
 			populateArrayList(startIndex, limit);
 			break;
 		case 3:
-			//under construction
+			startIndex = 2;
+			limit = 3;
+			populateArrayList(startIndex, limit);
 			break;
 		case 4:
 			startIndex = 0;
@@ -46,10 +49,13 @@ public class UserInterface extends WordMemorization{
 			populateArrayList(startIndex, limit);
 			break;
 		case 5:
-			//under construction
+			fileName = "Default and Foreign";
+			populateArrayList(fileName);
 			break;
 		case 6:
-			//under construction
+			startIndex = 1;
+			limit = 3;
+			populateArrayList(startIndex, limit);
 			break;
 		case 7:
 			addWords();

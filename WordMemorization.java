@@ -1,13 +1,7 @@
 package randomWordGame;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class WordMemorization {
 	
@@ -18,6 +12,7 @@ public class WordMemorization {
 	private static final String FOREIGN_FILEPATH = "SenpagaForeignWords.txt";
 	
 	private static ArrayList<String> arrayOfWords = new ArrayList<String>();
+	
 	
 
 	public static void addWords() {
@@ -40,8 +35,6 @@ public class WordMemorization {
 				bw.write(inputStr);
 				bw.newLine();
 				inputStr = br.readLine();
-				bw.close();
-				
 			}
 			
 			catch(IOException e) {
@@ -60,14 +53,14 @@ public class WordMemorization {
 		}
 	
 
-	public static void populateArrayList(int index1, int numOfFiles){
+	public static void populateArrayList(int startIndex, int limit){
 		
 		// Making sure the array is clear of input before adding to it.
 		arrayOfWords.clear();
 
 		String[] files = {DEFAULT_FILEPATH, USER_FILEPATH, FOREIGN_FILEPATH};
 		
-		for(int i = index1; i < numOfFiles; i++) {
+		for(int i = startIndex; i < limit; i++) {
 		try(Scanner scan1 = new Scanner(new File(files[i]))){
 			while(scan1.hasNext()){
 				
@@ -86,6 +79,35 @@ public class WordMemorization {
 		}
 		System.out.println(arrayOfWords);
 	}
+	
+	//overloaded function 
+	public static void populateArrayList(String fileName){
+		
+		// Making sure the array is clear of input before adding to it.
+		arrayOfWords.clear();
+
+		String[] files = {DEFAULT_FILEPATH, FOREIGN_FILEPATH};
+		
+		for(int i = 0; i < files.length; i++) {
+		try(Scanner scan1 = new Scanner(new File(files[i]))){
+			while(scan1.hasNext()){
+				
+				arrayOfWords.add(scan1.nextLine());
+				
+				}
+			
+				scan1.close();
+			}
+		
+			catch(IOException e){
+				
+				e.printStackTrace();
+				
+			}
+		}
+		System.out.println(arrayOfWords);
+	}
+	
 	
 }
 		
