@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class UserInterface extends WordMemorization{
 	
-	UserInterface(){
-		
-	}
+
 	
 	public static void optionsMenu() {
 		
