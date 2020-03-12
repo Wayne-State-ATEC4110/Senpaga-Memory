@@ -107,16 +107,15 @@ public class WordMemorization {
 		}
 		
 		System.out.println(arrayOfWords);
-		//sublistOfWords();
-		//displayWords();
+		
 	}
 	
-	/*
+	
 	public static void randomizeWords() {
 		Collections.shuffle(arrayOfWords);
 		System.out.println("Randomized Words: \n" + arrayOfWords);
 	}
-*/
+
 	public static void sublistOfWords() {
 	
 		
@@ -136,6 +135,8 @@ public class WordMemorization {
 		
 	}
 	
+	//function to delete a word from the user file only, one word per use.
+	//need to work on expanding this functionality but works as is.
 	public static void deleteWords( ){
 		System.out.println("Type a word from the file to delete. ");
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
