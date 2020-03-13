@@ -13,6 +13,11 @@ class Cards{
 					  "AS", "2S", "3S", "4S", "5S", "6S", "7S", "8S", "9S", "10S", "JS", "QS", "KS",
 				      "AD", "2D", "3D", "4D", "5D", "6D", "7D", "8D", "9D", "10D", "JD", "QD", "KD",
 				      "AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC"};
+	String[] jokerCards = {"AH", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H", "10H", "JH", "QH", "KH",
+			  "AS", "2S", "3S", "4S", "5S", "6S", "7S", "8S", "9S", "10S", "JS", "QS", "KS",
+		      "AD", "2D", "3D", "4D", "5D", "6D", "7D", "8D", "9D", "10D", "JD", "QD", "KD",
+		      "AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC",
+		      "Joker", "Joker"};
 	int packNumber = 0;
 	boolean jokerBool = false;
 	int row = 0;
@@ -22,17 +27,24 @@ class Cards{
 	Scanner sc = new Scanner(System.in);
 	
 	public void randomize() { //works
-		List<String> cardList = Arrays.asList(cards);
+		List<String> cardList = Arrays.asList(this.cards);
 		Collections.shuffle(cardList);
-		cards = cardList.toArray(new String[cardList.size()]);
+		this.cards = cardList.toArray(new String[cardList.size()]);
 	}
+	
+	public void jokerRand() { //randomizes the joker cards instead of the regular cards
+		List<String> cardList = Arrays.asList(this.jokerCards);
+		Collections.shuffle(cardList);
+		this.jokerCards = cardList.toArray(new String[cardList.size()]);
+	}
+	
 	
 	public void customization() {
 		
 		do {
 			System.out.println("How many card packs do you want to memorize?");
 			System.out.print("Input must be between 1-10: ");
-			int packNumber; //= sc.nextInt();
+			int packNumber; 
 			
 			//The validation code is here so that the user doesn't break the program. 0 can't be there for obvious reasons
 			//while I set the pack limit to 10 to avoid some memory concerns
@@ -48,13 +60,9 @@ class Cards{
 			packNumber = sc.nextInt();
 			
 			if(packNumber < 1)
-			{
-				System.out.println("Error! Too Low!");
-			}
+				{ System.out.println("Error! Too Low!"); }
 			if(packNumber > 10)
-			{
-				System.out.println("Error! Too High!");
-			}
+				{ System.out.println("Error! Too High!"); }
 				
 			
 			this.packNumber = packNumber;
@@ -63,7 +71,7 @@ class Cards{
 		
 		
 		System.out.print("Do you want to add Joker cards to your pack? (true/false): ");
-		boolean jokerBool; // = sc.nextBoolean();
+		boolean jokerBool;
 		while(!sc.hasNextBoolean()) //receiving input now
 		{
 			System.out.print("That's not a boolean! (true/false): " );
@@ -72,13 +80,19 @@ class Cards{
 		jokerBool = sc.nextBoolean();
 		this.jokerBool = jokerBool;
 		
+		int upper = 52; //represents how many cards per column you can have
 		
 		do {
 			System.out.println("How many cards per column? ");
-			System.out.print("Input must be between 1-52: ");
+			
+			if(this.jokerBool)
+			{
+				System.out.print("Input must be between 1-54: ");
+				upper = 54;
+			}
+			else
+		    	{System.out.print("Input must be between 1-52: ");}
 			int column;
-			
-			
 			
 			while(!sc.hasNextInt())
 			{
@@ -92,7 +106,7 @@ class Cards{
 			{
 				System.out.println("Error! Too Low!");
 			}
-			if(column > 52)
+			if(column > upper)
 			{
 				System.out.println("Error! Too High!");
 			}
@@ -100,7 +114,7 @@ class Cards{
 			
 			this.column = column;
 		}
-		while (this.column < 1 || this.column > 52);
+		while (this.column < 1 || this.column > upper);
 		
 		
 		

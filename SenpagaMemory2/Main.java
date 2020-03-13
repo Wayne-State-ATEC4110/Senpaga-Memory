@@ -5,11 +5,14 @@ import java.net.URL;
 public class Main {
 	
 	@SuppressWarnings("static-access")
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 		//Logan's Section
 		Options opt = new Options();
 		MemorizeNames nameGame = new MemorizeNames();
+		
+		ManagingUserDB db = new ManagingUserDB();
+		db.createDB(); //creates and connects to the database
 		
 		
 		
@@ -32,16 +35,21 @@ public class Main {
 				UI initial = new UI();
 				StopWatch test = new StopWatch();
 				
-				test.initialize();
+				
 				
 				user.customization();
+				
+				test.initialize(); //initializes the stopwatch
 				for(int i = 0; i < user.packNumber; i++)
 				{
 					System.out.println("Pack " + (i+1)); //move this to a class later
-					initial.cardView(user.column);
+					initial.cardView(user.column, user.jokerBool);
 					System.out.println();
 				}
 				user.end();
+				
+				nameGame.clearScreen(); //so that the user isn't tempted to go back and check the cards
+				
 				
 				test.setTime();
 				

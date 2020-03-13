@@ -11,15 +11,29 @@ public class UI {
 	Cards uiUser = new Cards();
 	Correct collect = new Correct();
 	
-	public void cardView(int column) throws IOException { //works
+	public void cardView(int column, boolean bool) throws IOException { //works
 		uiUser.randomize();
+		uiUser.jokerRand();
 		int spacing = 0;
+		int length;
+		String array[];
+		
+		if(bool) //set the length depending on whether or not you're using joker cards or not
+		{
+			length = uiUser.jokerCards.length;
+			array = uiUser.jokerCards;
+		}
+		else
+		{
+			length = uiUser.cards.length;
+			array = uiUser.cards;
+		}
 		
 		FileWriter systemWriter = new FileWriter("systemAttempt.txt"); //works like a charm!
-		for(int i = 0; i < uiUser.cards.length; i++)
+		for(int i = 0; i < length; i++)
 		{
-			System.out.print(uiUser.cards[i] + " ");
-			systemWriter.write(uiUser.cards[i] + " \n");
+			System.out.print(array[i] + " ");
+			systemWriter.write(array[i] + " \n");
 			spacing++;
 			if(spacing % column == 0)
 			{
