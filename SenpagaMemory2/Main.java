@@ -27,6 +27,9 @@ public class Main {
 				nameGame.printNames();
 				nameGame.guessNames();
 				nameGame.printNumberCorrect();
+				Scorekeeping scoreObj = new Scorekeeping();
+				scoreObj.namesScore(nameGame.correctSend);
+				scoreObj.printScore();
 			}
 			
 			if(opt.getOption() == 2)
@@ -65,7 +68,7 @@ public class Main {
 				
 				System.out.println("Your entire memorization session was " + test.seconds + " seconds long.");
 				System.out.println("You only got " + checker.correctNumber + " correct out of " + (52 * user.packNumber));
-				System.out.println("Your overall score is: " + scoreObj.score);
+				scoreObj.printScore();
 				checker.clear();
 			}
 			
@@ -80,6 +83,9 @@ public class Main {
 			{
 				NumberGame ng = new NumberGame();
 				ng.startGame();
+				Scorekeeping scoreObj = new Scorekeeping();
+				scoreObj.numbersScore(ng.correctAnswers);
+				scoreObj.printScore();
 			}
 			
 			

@@ -42,91 +42,101 @@ class Cards{
 	public void customization() {
 		
 		do {
-			System.out.println("How many card packs do you want to memorize?");
-			System.out.print("Input must be between 1-10: ");
-			int packNumber; 
+		
+			do {
+				System.out.println("How many card packs do you want to memorize?");
+				System.out.print("Input must be between 1-10: ");
+				int packNumber; 
+				
+				//The validation code is here so that the user doesn't break the program. 0 can't be there for obvious reasons
+				//while I set the pack limit to 10 to avoid some memory concerns
+				
+				
+				
+				while(!sc.hasNextInt())
+				{
+					System.out.print("Enter a Number!: ");
+					sc.next();
+				}
+				
+				packNumber = sc.nextInt();
+				
+				if(packNumber < 1)
+					{ System.out.println("Error! Too Low!"); }
+				if(packNumber > 10)
+					{ System.out.println("Error! Too High!"); }
+					
+				
+				this.packNumber = packNumber;
+			}
+			while (this.packNumber < 1 || this.packNumber > 10);
 			
-			//The validation code is here so that the user doesn't break the program. 0 can't be there for obvious reasons
-			//while I set the pack limit to 10 to avoid some memory concerns
 			
-			
-			
-			while(!sc.hasNextInt())
+			System.out.print("Do you want to add Joker cards to your pack? (true/false): ");
+			boolean jokerBool;
+			while(!sc.hasNextBoolean()) //receiving input now
 			{
-				System.out.print("Enter a Number!: ");
+				System.out.print("That's not a boolean! (true/false): " );
 				sc.next();
 			}
+			jokerBool = sc.nextBoolean();
+			this.jokerBool = jokerBool;
 			
-			packNumber = sc.nextInt();
+			int upper = 52; //represents how many cards per column you can have
 			
-			if(packNumber < 1)
-				{ System.out.println("Error! Too Low!"); }
-			if(packNumber > 10)
-				{ System.out.println("Error! Too High!"); }
+			do {
+				System.out.println("How many cards per column? ");
 				
-			
-			this.packNumber = packNumber;
-		}
-		while (this.packNumber < 1 || this.packNumber > 10);
-		
-		
-		System.out.print("Do you want to add Joker cards to your pack? (true/false): ");
-		boolean jokerBool;
-		while(!sc.hasNextBoolean()) //receiving input now
-		{
-			System.out.print("That's not a boolean! (true/false): " );
-			sc.next();
-		}
-		jokerBool = sc.nextBoolean();
-		this.jokerBool = jokerBool;
-		
-		int upper = 52; //represents how many cards per column you can have
-		
-		do {
-			System.out.println("How many cards per column? ");
-			
-			if(this.jokerBool)
-			{
-				System.out.print("Input must be between 1-54: ");
-				upper = 54;
+				if(this.jokerBool)
+				{
+					System.out.print("Input must be between 1-54: ");
+					upper = 54;
+				}
+				else
+			    	{System.out.print("Input must be between 1-52: ");}
+				int column;
+				
+				while(!sc.hasNextInt())
+				{
+					System.out.print("Enter a Number!: ");
+					sc.next();
+				}
+				
+				column = sc.nextInt();
+				
+				if(column < 1)
+				{
+					System.out.println("Error! Too Low!");
+				}
+				if(column > upper)
+				{
+					System.out.println("Error! Too High!");
+				}
+					
+				
+				this.column = column;
 			}
-			else
-		    	{System.out.print("Input must be between 1-52: ");}
-			int column;
+			while (this.column < 1 || this.column > upper);
 			
-			while(!sc.hasNextInt())
+			
+			
+			System.out.print("Is everything to your satisfaction?(true/false): ");
+			boolean satisfaction;
+			while(!sc.hasNextBoolean())
 			{
-				System.out.print("Enter a Number!: ");
+				System.out.print("That's not a boolean! (true/false): ");
 				sc.next();
 			}
+			satisfaction = sc.nextBoolean();
+			this.satisfaction = satisfaction;
 			
-			column = sc.nextInt();
-			
-			if(column < 1)
+			if(!this.satisfaction)
 			{
-				System.out.println("Error! Too Low!");
+				System.out.println();
+				System.out.println("Ok, re-enter your choices again \n \n");
 			}
-			if(column > upper)
-			{
-				System.out.println("Error! Too High!");
-			}
-				
-			
-			this.column = column;
-		}
-		while (this.column < 1 || this.column > upper);
 		
-		
-		
-		System.out.print("Is everything to your satisfaction?(true/false): ");
-		boolean satisfaction;
-		while(!sc.hasNextBoolean())
-		{
-			System.out.print("That's not a boolean! (true/false): ");
-			sc.next();
-		}
-		satisfaction = sc.nextBoolean();
-		this.satisfaction = satisfaction;
+		}while(!this.satisfaction);
 		
 		
 		System.out.println();

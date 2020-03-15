@@ -3,16 +3,16 @@
 
 public class Scorekeeping {
 	
-	int score;
+	double score;
 	
 	void cardsScore(int correct)
 	{
 		this.score = correct * 5;
 	}
 	
-	void namesScore(int correct)
+	void namesScore(double correct)
 	{
-		this.score = correct * 2;
+		this.score = (correct * 2.0);
 	}
 	
 	void numbersScore(int correct)
@@ -23,5 +23,10 @@ public class Scorekeeping {
 	void wordsScore(int correct)
 	{
 		this.score = correct * 10;
+	}
+	
+	void printScore()
+	{
+		System.out.println("Your overall score is: " + this.score);
 	}
 }

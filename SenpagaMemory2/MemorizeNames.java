@@ -9,6 +9,9 @@ public class MemorizeNames {
     private String[] enterNames;
     private File file;
     private String nameType;
+    
+    //I added this variable to make scorekeeping easier
+    double correctSend;
 
 
     public int getAmountLinesInFile(File file) {
@@ -148,7 +151,8 @@ public class MemorizeNames {
                 correct++;
             }
         }
-
+        
+        this.correctSend = correct;
         return ((correct / names.length) * 100);
     }
 
