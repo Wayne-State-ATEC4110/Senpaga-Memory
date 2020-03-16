@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Options {
-    private String[] optionList = new String[5]; //may have to change this
+    private String[] optionList = new String[6]; //may have to change this
     private int option;
 
     public Options() {
@@ -9,7 +9,8 @@ public class Options {
         optionList[1] = "2) Memorize Cards";
         optionList[2] = "3) Memorize Words";
         optionList[3] = "4) Memorize Numbers";
-        optionList[4] = "5) Quit";
+        optionList[4] = "5) Choose a User";
+        optionList[5] = "6) Quit";
     }
 
     public int getOption() {
@@ -17,7 +18,14 @@ public class Options {
     }
 
     public void print() {
-        System.out.println("Welcome to Senpaga Memory\n\nSelect an option to continue\n");
+    	ManagingUser current = new ManagingUser();
+    	
+        System.out.println("Welcome to Senpaga Memory\n\nSelect an option to continue");
+        System.out.print("The current user is: ");
+        current.getCurrentUser();
+        System.out.println();
+        
+        
         for (int i = 0; i < optionList.length; i++) {
             System.out.println(optionList[i]);
         }

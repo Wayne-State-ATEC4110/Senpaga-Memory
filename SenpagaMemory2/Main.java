@@ -7,7 +7,6 @@ public class Main {
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
-		//Logan's Section
 		Options opt = new Options();
 		MemorizeNames nameGame = new MemorizeNames();
 		
@@ -15,8 +14,7 @@ public class Main {
 		db.createDB(); //creates and connects to the database
 		
 		
-		
-		while(opt.getOption() != 5) //this is a loop that will keep on going until the quit option is chosen
+		while(opt.getOption() != 6) //this is a loop that will keep on going until the quit option is chosen
 		{
 			opt.print();
 			opt.selectOption();
@@ -86,6 +84,13 @@ public class Main {
 				Scorekeeping scoreObj = new Scorekeeping();
 				scoreObj.numbersScore(ng.correctAnswers);
 				scoreObj.printScore();
+			}
+			
+			if(opt.getOption() == 5)
+			{
+				ManagingUser select = new ManagingUser();
+				select.getUsers();
+				select.switchUser();
 			}
 			
 			
