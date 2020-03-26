@@ -29,22 +29,34 @@ public class Options {
     public int selectOption() {
         int optionSelect;
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("Select an option: ");
 
-        while (!scanner.hasNextInt()) {
-            scanner.next();
+        /*while (!scanner.hasNextInt()) {
+            scanner.nextLine();
             System.out.println("Invalid Option! Please enter a number between 1 and 5");
             System.out.print("Select an option: ");
-        }
+        }*/
 
-        optionSelect = scanner.nextInt();
+        optionSelect = checkNumber(scanner, 1, 5);
 
+        //optionSelect = scanner.nextInt();
         this.option = optionSelect;
         return optionSelect;
     }
 
 
-
+    // Function - To check if the user has inputted a number between two numbers.
+    public int checkNumber(Scanner userInput, int numberRangeOne, int numberRangeTwo) {
+        for (; ; ) {
+            if (!userInput.hasNextInt()) {
+                System.out.print("Please enter a number: ");
+            } else {
+                int number = userInput.nextInt();
+                if ((number >= numberRangeOne) && number <= numberRangeTwo) return number;
+                System.out.print("Your number must be between " + numberRangeOne + " and " + numberRangeTwo + ": ");
+            }
+            userInput.nextLine(); // discard line of input.
+        }
+    }
 
 }
