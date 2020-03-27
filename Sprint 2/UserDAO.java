@@ -13,7 +13,9 @@ public class UserDAO {
 	private DBConnection dbConnection = null;
 	
 	private void createTable() throws SQLException {
+		dbConnection = new DBConnection();
 		connect = dbConnection.connect_func();
+		System.out.println(connect);
 		Statement statement = null;
 		String sqlstmt = "CREATE TABLE IF NOT EXISTS User " +
                 "(userID VARCHAR(20) not NULL, " + " firstName VARCHAR(20), " +
@@ -26,7 +28,7 @@ public class UserDAO {
 	}
 	
 	public User getUser(String ID) throws SQLException {
-		User user = null;
+		User user = new User();
 		createTable();
 		connect = dbConnection.connect_func();
         String sql = "SELECT * FROM User WHERE userID = ?";
