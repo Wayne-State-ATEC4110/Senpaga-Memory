@@ -107,14 +107,26 @@ public class MemorizeNames {
 
     public void printNames() {
         Scanner scanner = new Scanner(System.in);
-        int seconds;
+        int counter = 0;
+
         System.out.println("\nHow long do you want to view names (in seconds): ");
-        System.out.print("Enter number: ");
-        seconds = scanner.nextInt();
+        System.out.print("Enter number between 1 and 1000: ");
+        int seconds = checkNumber(scanner, 1, 1000);
+
+        System.out.println("How many names do you want per row: ");
+        System.out.print("Enter number between 1 and 10: ");
+        int numOfNamesPerRow = checkNumber(scanner, 1, 10);
 
         System.out.println("\nYou have " + seconds + " seconds to remember the following names in order: \n");
         for (int i = 0; i < names.size(); i++) {
-            System.out.println(names.get(i));
+            if (counter < numOfNamesPerRow) {
+                System.out.print(names.get(i) + " ");
+                counter++;
+            }
+            if (counter == numOfNamesPerRow) {
+                System.out.println();
+                counter = 0;
+            }
         }
         try {
             Thread.sleep(seconds * 1000);
