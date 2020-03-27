@@ -12,13 +12,14 @@ public class MemorizeNames {
 
     private ArrayList<String> names = new ArrayList<String>();
     private ArrayList<String> populatedArray = new ArrayList<String>();
+    private ArrayList<String> namesGuessed = new ArrayList<String>();
 
 
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
         int numOfNames;
         int nameType = selectNameType();
-        System.out.println("How many names do you want to memorize?\nEnter a number between 1 and 1000");
+        System.out.println("\nHow many names do you want to memorize?\nEnter a number between 1 and 1000");
         System.out.print("Enter option: ");
         numOfNames = checkNumber(scanner, 1, 1000);
         if (nameType == 1) {
@@ -27,12 +28,15 @@ public class MemorizeNames {
             loadNamesFromFile("User");
         }
         populateNames(numOfNames);
-        //printNames();
+        printNames();
+        clearScreen();
+        guessNames();
+        calculateNumberCorrect();
     }
 
     public int selectNameType() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select name type");
+        System.out.println("\nSelect name type");
         System.out.println("1) Use Default Names");
         System.out.println("2) Use Your Own Names");
         System.out.print("Enter option: ");
@@ -102,8 +106,51 @@ public class MemorizeNames {
 
 
     public void printNames() {
+        Scanner scanner = new Scanner(System.in);
+        int seconds;
+        System.out.println("\nHow long do you want to view names (in seconds): ");
+        System.out.print("Enter number: ");
+        seconds = scanner.nextInt();
+
+        System.out.println("\nYou have " + seconds + " seconds to remember the following names in order: \n");
         for (int i = 0; i < names.size(); i++) {
             System.out.println(names.get(i));
+        }
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void guessNames() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nGuess the names previously printed");
+
+        namesGuessed.clear();
+        for (int i = 0; i < names.size(); i++) {
+            System.out.print((i + 1) + ": ");
+            namesGuessed.add(i, scanner.nextLine());
+        }
+    }
+
+    public void calculateNumberCorrect() {
+        int correct = 0;
+        for (int i = 0; i < namesGuessed.size(); i++) {
+            if (namesGuessed.get(i).equals(names.get(i))) {
+                correct++;
+            }
+        }
+
+        System.out.println("You got " + correct + " correct out of " + names.size() + "\n");
+
+        // Can return a value if needed for leaderboards in future.
+        //return ((correct / names.size()) * 100);
+    }
+
+    public void clearScreen() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("");
         }
     }
 
