@@ -10,7 +10,7 @@ public class DBConnection {
 	 private Statement statement = null;
 	 private PreparedStatement preparedStatement = null;
 	 private ResultSet resultSet = null;
-	public void connect_func() throws SQLException {
+	public Connection connect_func() throws SQLException {
 		
 	    if (connect == null || connect.isClosed()) {
 	        try {
@@ -25,12 +25,15 @@ public class DBConnection {
 				          + "user=admin&password=password");
 	        System.out.println(connect);
 	    }
+		return connect;
 	}
 	
 	protected void disconnect() throws SQLException {
         if (connect != null && !connect.isClosed()) {
         	connect.close();
         }
+        
+        
     }
 
 }
