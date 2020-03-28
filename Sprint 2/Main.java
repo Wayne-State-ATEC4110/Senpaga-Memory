@@ -1,5 +1,11 @@
 package randomWordGame;
 
+/**
+ * Main class creates single instance of MenuSystem object.
+ * 
+ * @author Christine
+ *
+ */
 
 public class Main {
 

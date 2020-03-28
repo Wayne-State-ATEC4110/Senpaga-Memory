@@ -2,8 +2,18 @@ package randomWordGame;
 
 import java.util.ArrayList;
 
+/**
+ * Class that begins game.
+ * @author Christine
+ *
+ */
 public class MemorizeWordsGame {
 
+	/**
+	 * Begins game with all of the user's game selections.
+	 * @throws InterruptedException thrown when sleep is interrupted before/during execution.
+	 */
+	
 	//private static ArrayList<String> theList = new ArrayList<String>();
 	public static void startGame() throws InterruptedException {
 		

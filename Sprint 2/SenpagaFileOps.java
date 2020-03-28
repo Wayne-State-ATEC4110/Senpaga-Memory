@@ -3,7 +3,14 @@ package randomWordGame;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * This class handles the Senpaga Word Memorization Files.
+ * It encapsulates CRUD operations on the SenpagaUserWords.txt file, as well as declare 
+ * the SenpagaDefaultWords.txt and SenpagaForeignWords.txt as constants.
+ * 
+ * @author Christine
+ *
+ */
 public class SenpagaFileOps {
 	
 	protected static final String DEFAULT_FILEPATH = "SenpagaDefaultWords.txt";
@@ -14,7 +21,9 @@ public class SenpagaFileOps {
 	
 	protected static ArrayList<String> arrayOfWords = new ArrayList<String>();
 	
-	
+	/**
+	 * Creates SenpagaUserWords.txt if not already created and allows users to append words to it.
+	 */
 	public static void addWords() {
 		
 		// Instructing the user for proper input.
@@ -51,9 +60,9 @@ public class SenpagaFileOps {
 		
 		}
 	
-
-	//function to delete a word from the user file only, one word per use.
-	//need to work on expanding this functionality but works as is.
+	/**
+	 * Deletes words from SenpagaUserWords.txt, one word at a time.
+	 */
 	public static void deleteWords( ){
 		System.out.println("Type a word from the file to delete. ");
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
@@ -87,12 +96,16 @@ public class SenpagaFileOps {
 		
 	}
 	
+	/**
+	 * Updates the SenpagaUserWords.txt to reflect deletion.
+	 * @param arrayList arrayOfWords ArrayList passed from deleteWords function.
+	 */
 
-	public static void updateFile(ArrayList<String> al) {
+	public static void updateFile(ArrayList<String> arrayList) {
 		try { 
 			BufferedWriter bw2 = new BufferedWriter(new FileWriter(USER_FILEPATH));
 		
-		for (int x = 0; x < al.size(); x++) {
+		for (int x = 0; x < arrayList.size(); x++) {
 			bw2.write(arrayOfWords.get(x));
 			bw2.newLine();
 		}

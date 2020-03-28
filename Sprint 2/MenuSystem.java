@@ -3,6 +3,13 @@ package randomWordGame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class encapsulates a menu system for Senpaga-Memory players to navigate the 
+ * Word Memorization Game.
+ * 
+ * @author Christine
+ *
+ */
 public class MenuSystem{
 	
 
@@ -12,12 +19,17 @@ public class MenuSystem{
 	protected static ArrayList<String> gameArrayList = new ArrayList<String>();
 	private static MenuSystem singleInstance = null;
 	
-	//singleton constructor
+	/**
+	 * Singleton Constructor of the MenuSystem class.
+	 */
 	private MenuSystem() {
 		System.out.println("Menu System initialized.");
 	}
 	
-	//checking that there is only once instance
+	/**
+	 * Ensuring that there is only one instance of the MenuSystem class.
+	 * @return MenuSystem singleInstance.
+	 */
 	public static MenuSystem getInstance() {
 		if (singleInstance == null) 
 			singleInstance = new MenuSystem();
@@ -25,11 +37,9 @@ public class MenuSystem{
 		return singleInstance;
 	}
 	
-	//first menu the user accesses
-	//here they select their game mode, which will ask (in the future) what timer they want 
-	//practice mode has no timer currently
-	//competitive simply means there is by default a timer and their scores will be recorded
-	//custom mode will ask for a timer and number of words they want to memorize
+	/**
+	 * First menu the user accesses, wherein they will select their preferred game mode.
+	 */
 	public static void gameModeMenu() {
 		System.out.println("1) Practice \n2) Competitive \n3) Custom\n");
 		choice = scan.nextInt();
@@ -52,6 +62,10 @@ public class MenuSystem{
 		}
 	}
 	
+	/**
+	 * Optional menu the user can access before they begin the game to manage words in 
+	 * the SenpagaUserWords.txt.
+	 */
 	public static void wordManagementMenu() {
 		System.out.println("Select from the options below.\n");
 		System.out.println("1) Add Words \n2) Delete Words \n3) Quit\n");
@@ -78,6 +92,10 @@ public class MenuSystem{
 		
 	}
 	
+	/**
+	 * User selects their file(s).
+	 */
+	//*user* words before they proceed to the difficulty menu
 	public static void fileSelectMenu() {
 		System.out.println("Select your file(s) from the options below.");
 		System.out.println("1) Default \n2) User \n3) Foreign \n4) Deafult + User"
@@ -125,6 +143,11 @@ public class MenuSystem{
 		}while(scan.hasNext());
 		
 	}
+	
+	/**
+	 * User is asked if they want to manage their SenpagaUserWords.txt file before they set
+	 * their difficulty.
+	 */
 	public static void continuePrompt() {
 		System.out.println("Would you like to manage your words before continuing? "
 				+ "\n1) Yes \n2) No\n");
@@ -142,6 +165,11 @@ public class MenuSystem{
 			System.out.println(reprompt);
 	}
 	
+	/**
+	 * Difficulty Menu allows users to set their difficulty based on word count.
+	 * @throws InterruptedException thrown when sleep is interrupted before/during execution.
+	 * Thrown due to control going to the startGame function of MemorizeWordsGame class.
+	 */
 	public static void difficultyMenu() throws InterruptedException {
 		
 		System.out.println("Select a Difficulty from the options below.\n");

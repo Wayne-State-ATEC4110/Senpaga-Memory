@@ -3,10 +3,20 @@ package randomWordGame;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class handles ArrayList Operations, populating the arrayOfWords with user-chosen files,
+ * as well as shuffling, sublisting, and displaying the arrayOfWords.
+ * @author Christine
+ *
+ */
 public class ArrayListOps extends SenpagaFileOps {
 	
 	
-	
+	/**
+	 * Populates arrayOfWords with files next to each other in the files array.
+	 * @param startIndex indicates the first file floor (first file).
+	 * @param limit indicates the file ceiling (last file).
+	 */
 	public static void populateArrayList(int startIndex, int limit){
 		
 		// Making sure the array is clear of input before adding to it.
@@ -36,6 +46,10 @@ public class ArrayListOps extends SenpagaFileOps {
 		//System.out.println(arrayOfWords);
 	}
 	
+	/**
+	 * Overloaded function to handle case of user choosing both Default and Foreign text files.
+	 * @param fileName "Default and Foreign" in fileSelectMenu switch case.
+	 */
 	//overloaded function 
 	public static void populateArrayList(String fileName){
 		
@@ -66,12 +80,19 @@ public class ArrayListOps extends SenpagaFileOps {
 		
 	}
 	
-	
+	/**
+	 * Shuffles arrayOfWords.
+	 */
 	public static void randomizeWords() {
 		Collections.shuffle(arrayOfWords);
 		//System.out.println("Randomized Words: \n" + arrayOfWords);
 	}
 
+	/**
+	 * Selects a portion of arrayOfWords to be used as difficulty settings.
+	 * @param sublist word count.
+	 * @return new ArrayList.
+	 */
 	public static ArrayList<String> sublistOfWords(int sublist) {
 		randomizeWords();
 		ArrayList<String> theSublist = new ArrayList<String>(arrayOfWords.subList(0, sublist));
@@ -81,6 +102,10 @@ public class ArrayListOps extends SenpagaFileOps {
 		return theSublist;
 	}
 	
+	/**
+	 * Displays words from the passed ArrayList.
+	 * @param theSublist passed from sublistOfWords function.
+	 */
 	public static void displayWords(ArrayList<String> theSublist) {
 		int count = 1;
 		for (int i = 0; i < theSublist.size(); i++) {
