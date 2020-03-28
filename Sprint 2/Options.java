@@ -1,3 +1,9 @@
+/*
+    Author: Logan Jackson
+    Description: Options class is used to create
+    an options menu for users to navigate through the program.
+*/
+
 package me.logan.senpagamemory;
 
 import java.util.Scanner;
@@ -6,6 +12,11 @@ public class Options {
     private String[] optionList = new String[5]; //may have to change this
     private int option;
 
+
+    /*
+        Description: Options constructor initializes the Options
+        object and defines the option items.
+    */
     public Options() {
         optionList[0] = "1) Memorize Names";
         optionList[1] = "2) Memorize Cards";
@@ -14,10 +25,19 @@ public class Options {
         optionList[4] = "5) Quit";
     }
 
+    /*
+        Description: method to get the option
+        selected.
+    */
     public int getOption() {
         return this.option;
     }
 
+    /*
+        Description: Prints a welcome message and
+        a list of options for the user to select
+        from.
+    */
     public void print() {
         System.out.println("Welcome to Senpaga Memory\n\nSelect an option to continue\n");
         for (int i = 0; i < optionList.length; i++) {
@@ -26,37 +46,18 @@ public class Options {
         System.out.println("");
     }
 
+    /*
+        Description: Prompts the user to select an
+        option from the options menu.
+    */
     public int selectOption() {
         int optionSelect;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Select an option: ");
-
-        /*while (!scanner.hasNextInt()) {
-            scanner.nextLine();
-            System.out.println("Invalid Option! Please enter a number between 1 and 5");
-            System.out.print("Select an option: ");
-        }*/
-
-        optionSelect = checkNumber(scanner, 1, 5);
-
-        //optionSelect = scanner.nextInt();
+        optionSelect = UserValidation.checkNumber(scanner, 1, 5);
         this.option = optionSelect;
         return optionSelect;
     }
 
-
-    // Function - To check if the user has inputted a number between two numbers.
-    public int checkNumber(Scanner userInput, int numberRangeOne, int numberRangeTwo) {
-        for (; ; ) {
-            if (!userInput.hasNextInt()) {
-                System.out.print("Please enter a number: ");
-            } else {
-                int number = userInput.nextInt();
-                if ((number >= numberRangeOne) && number <= numberRangeTwo) return number;
-                System.out.print("Your number must be between " + numberRangeOne + " and " + numberRangeTwo + ": ");
-            }
-            userInput.nextLine(); // discard line of input.
-        }
-    }
 
 }
