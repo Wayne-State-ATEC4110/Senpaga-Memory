@@ -7,17 +7,20 @@ import java.util.Scanner;
 
 //author: Ervin Colston
 
+//this class is for the Managing Multiple Users functionality
+//try and catch blocks are used in the SQL operations for rainy day purposes
+
 public class ManagingUser {
 	
 	int count; //this field is for keeping track of how many users are in the system so that switching between users is 
 	//easier
 	int userNumberSelection; //used for validation purposes for ranges
-	String word;
-	String currentUser;
+	String word; //this field is mainly used for accessing the strings stored in the database
+	String currentUser; //used for storing the current user in the system
 	
 	public void getCurrentUser(){
 		
-		ManagingUserDB connector = new ManagingUserDB();
+		ManagingUserDB connector = new ManagingUserDB(); //using the database class to help supplement most of the database operations
 		
         String sql = "SELECT CurrentUser FROM CurrentUser";
         
@@ -82,6 +85,7 @@ public class ManagingUser {
 			
 			num = sc.nextInt();
 			
+			//the below code guarantees that you choose a valid user
 			if(num < 1)
 				{ System.out.println("Error! Too Low!"); }
 			if(num > this.count)
@@ -95,7 +99,7 @@ public class ManagingUser {
 		getReplacement();
 		replace();
 		
-		System.out.println("User has been changed \n\n"); 
+		System.out.println("User has been changed \n\n"); //validation code message
 		
 	}
 	
@@ -125,7 +129,7 @@ public class ManagingUser {
         }
 	}
 
-	public void replace() //actually replace the current user
+	public void replace() //actually replace the current user with the new current user
 	{
 		//first truncate table
 		ManagingUserDB connector = new ManagingUserDB();

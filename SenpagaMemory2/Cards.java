@@ -19,10 +19,11 @@ class Cards{
 		      "AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC",
 		      "Joker", "Joker"};
 	int packNumber = 0;
-	boolean jokerBool = false;
+	boolean jokerBool = false; //boolean used to determine if the user wants to use joker cards or not ; set to false by default
 	int row = 0;
 	int column = 0;
-	boolean satisfaction = true;
+	boolean satisfaction = true; //boolean used to determine if the user is satisfied with their customization options ; set to true by
+	//default ; if false is chosen, the user will have to re-enter their options again
 	int cardNumber = cards.length;
 	Scanner sc = new Scanner(System.in);
 	
@@ -39,7 +40,7 @@ class Cards{
 	}
 	
 	
-	public void customization() {
+	public void customization() { //in order to implement validation checking, this whole method is a series of nested do-while loops
 		
 		do {
 		
@@ -53,7 +54,7 @@ class Cards{
 				
 				
 				
-				while(!sc.hasNextInt())
+				while(!sc.hasNextInt()) //this is here to make sure that the user actually enters a number
 				{
 					System.out.print("Enter a Number!: ");
 					sc.next();
@@ -69,7 +70,8 @@ class Cards{
 				
 				this.packNumber = packNumber;
 			}
-			while (this.packNumber < 1 || this.packNumber > 10);
+			while (this.packNumber < 1 || this.packNumber > 10); //if the parameters are not up to par, the user will have to enter this
+			//information again
 			
 			
 			System.out.print("Do you want to add Joker cards to your pack? (true/false): ");
@@ -87,7 +89,7 @@ class Cards{
 			do {
 				System.out.println("How many cards per column? ");
 				
-				if(this.jokerBool)
+				if(this.jokerBool) //special option for those who want to use joker cards
 				{
 					System.out.print("Input must be between 1-54: ");
 					upper = 54;
