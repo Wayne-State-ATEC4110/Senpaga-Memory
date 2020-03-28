@@ -1,8 +1,8 @@
 package randomWordGame;
 
-import java.util.ArrayList;
 
 /**
+ * Sprint 2
  * Class that begins game.
  * @author Christine
  *
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class MemorizeWordsGame {
 
 	/**
+	 * Sprint 2
 	 * Begins game with all of the user's game selections.
 	 * @throws InterruptedException thrown when sleep is interrupted before/during execution.
 	 */

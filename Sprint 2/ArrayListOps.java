@@ -13,6 +13,7 @@ public class ArrayListOps extends SenpagaFileOps {
 	
 	
 	/**
+	 * Sprint 1
 	 * Populates arrayOfWords with files next to each other in the files array.
 	 * @param startIndex indicates the first file floor (first file).
 	 * @param limit indicates the file ceiling (last file).
@@ -47,6 +48,7 @@ public class ArrayListOps extends SenpagaFileOps {
 	}
 	
 	/**
+	 * Sprint 1
 	 * Overloaded function to handle case of user choosing both Default and Foreign text files.
 	 * @param fileName "Default and Foreign" in fileSelectMenu switch case.
 	 */
@@ -81,6 +83,7 @@ public class ArrayListOps extends SenpagaFileOps {
 	}
 	
 	/**
+	 * Sprint 2
 	 * Shuffles arrayOfWords.
 	 */
 	public static void randomizeWords() {
@@ -89,6 +92,7 @@ public class ArrayListOps extends SenpagaFileOps {
 	}
 
 	/**
+	 * Sprint 2
 	 * Selects a portion of arrayOfWords to be used as difficulty settings.
 	 * @param sublist word count.
 	 * @return new ArrayList.
@@ -103,6 +107,7 @@ public class ArrayListOps extends SenpagaFileOps {
 	}
 	
 	/**
+	 * Sprint 1/2
 	 * Displays words from the passed ArrayList.
 	 * @param theSublist passed from sublistOfWords function.
 	 */

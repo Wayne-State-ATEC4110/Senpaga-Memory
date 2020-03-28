@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * Sprint 2 UI
  * This class encapsulates a menu system for Senpaga-Memory players to navigate the 
  * Word Memorization Game.
  * 
@@ -20,6 +21,7 @@ public class MenuSystem{
 	private static MenuSystem singleInstance = null;
 	
 	/**
+	 * Sprint 2
 	 * Singleton Constructor of the MenuSystem class.
 	 */
 	private MenuSystem() {
@@ -38,6 +40,7 @@ public class MenuSystem{
 	}
 	
 	/**
+	 * Sprint 2
 	 * First menu the user accesses, wherein they will select their preferred game mode.
 	 */
 	public static void gameModeMenu() {
@@ -63,6 +66,7 @@ public class MenuSystem{
 	}
 	
 	/**
+	 * Sprint 1, but new UI
 	 * Optional menu the user can access before they begin the game to manage words in 
 	 * the SenpagaUserWords.txt.
 	 */
@@ -93,6 +97,7 @@ public class MenuSystem{
 	}
 	
 	/**
+	 * Sprint 1, but new UI
 	 * User selects their file(s).
 	 */
 	//*user* words before they proceed to the difficulty menu
@@ -145,6 +150,7 @@ public class MenuSystem{
 	}
 	
 	/**
+	 * Sprint 2
 	 * User is asked if they want to manage their SenpagaUserWords.txt file before they set
 	 * their difficulty.
 	 */
@@ -166,6 +172,7 @@ public class MenuSystem{
 	}
 	
 	/**
+	 * Sprint 2
 	 * Difficulty Menu allows users to set their difficulty based on word count.
 	 * @throws InterruptedException thrown when sleep is interrupted before/during execution.
 	 * Thrown due to control going to the startGame function of MemorizeWordsGame class.

@@ -22,6 +22,7 @@ public class SenpagaFileOps {
 	protected static ArrayList<String> arrayOfWords = new ArrayList<String>();
 	
 	/**
+	 * Sprint 1
 	 * Creates SenpagaUserWords.txt if not already created and allows users to append words to it.
 	 */
 	public static void addWords() {
@@ -61,6 +62,7 @@ public class SenpagaFileOps {
 		}
 	
 	/**
+	 * Sprint 2
 	 * Deletes words from SenpagaUserWords.txt, one word at a time.
 	 */
 	public static void deleteWords( ){
@@ -97,6 +99,7 @@ public class SenpagaFileOps {
 	}
 	
 	/**
+	 * Sprint 2
 	 * Updates the SenpagaUserWords.txt to reflect deletion.
 	 * @param arrayList arrayOfWords ArrayList passed from deleteWords function.
 	 */
