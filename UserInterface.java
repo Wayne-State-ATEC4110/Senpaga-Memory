@@ -8,8 +8,6 @@ public class UserInterface extends WordMemorization{
 	
 	public static void optionsMenu() {
 		
-		
-		
 		System.out.println("\n\t\t\t\t    OPTIONS");
 		System.out.println("\t\t      Enter a number from the menu below.\n");
 		System.out.println("\t\tUse only default words -----------------------> 1");
