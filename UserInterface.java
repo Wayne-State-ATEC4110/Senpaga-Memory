@@ -17,12 +17,10 @@ public class UserInterface extends WordMemorization{
 		System.out.println("\t\tUse both the default words and foreign words -> 5");
 		System.out.println("\t\tUse both your words and foreign words --------> 6");
 		System.out.println("\t\tAdd words ------------------------------------> 7");
-		System.out.println("\t\tDelete words ---------------------------------> 8");
-		System.out.println("\t\tQuit to Main Menu ----------------------------> 9");
+		System.out.println("\t\tQuit to Main Menu ----------------------------> 8");
 		
 		int choice, startIndex, limit;
 		String fileName;
-		String word = null;
 		Scanner scan = new Scanner(System.in);
 		
 		do {
@@ -61,19 +59,16 @@ public class UserInterface extends WordMemorization{
 			addWords();
 			break;
 		case 8:
-			deleteWords();
-			break;
-		case 9:
 			System.out.println("Quitting to Senpaga Memory Home Page...");
 			break;
 		default:
-			System.out.println("Invalid Input. Enter a number between 1 and 9.");
+			System.out.println("Invalid Input. Enter a number between 1 and 8.");
 			break;
 		}
 			
-	} while(choice != 9);
+	} while(choice >= 1 || choice < 8);
 	
-		
+		scan.close();
 }
 	
 }
