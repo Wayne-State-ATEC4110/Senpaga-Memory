@@ -138,7 +138,7 @@ public class MenuSystem{
 			ArrayListOps.populateArrayList(0, 3);
 			continuePrompt();
 			break;
-		case 9:
+		case 8:
 			System.out.println("\nQuitting to Senpaga Memory Home...");
 			break;
 		default:
