@@ -1,7 +1,7 @@
-/*
-    Author: Logan Jackson
-    Description: Options class is used to create
-    an options menu for users to navigate through the program.
+/**
+ * @author Logan Jackson
+ * Description: Options class is used to create
+ * an options menu for users to navigate through the program.
 */
 
 package me.logan.senpagamemory;
@@ -13,9 +13,9 @@ public class Options {
     private int option;
 
 
-    /*
-        Description: Options constructor initializes the Options
-        object and defines the option items.
+    /**
+     * Description: Options constructor initializes the Options
+     * object and defines the option items.
     */
     public Options() {
         optionList[0] = "1) Memorize Names";
@@ -25,18 +25,20 @@ public class Options {
         optionList[4] = "5) Quit";
     }
 
-    /*
-        Description: method to get the option
-        selected.
+    /**
+     * Description: method to get the option
+     * selected.
+     *
+     * @return this.option
     */
     public int getOption() {
         return this.option;
     }
 
-    /*
-        Description: Prints a welcome message and
-        a list of options for the user to select
-        from.
+    /**
+     * Description: Prints a welcome message and
+     * a list of options for the user to select
+     * from.
     */
     public void print() {
         System.out.println("Welcome to Senpaga Memory\n\nSelect an option to continue\n");
@@ -46,9 +48,11 @@ public class Options {
         System.out.println("");
     }
 
-    /*
-        Description: Prompts the user to select an
-        option from the options menu.
+    /**
+     * Description: Prompts the user to select an
+     * option from the options menu.
+     *
+     * @return optionSelect
     */
     public int selectOption() {
         int optionSelect;

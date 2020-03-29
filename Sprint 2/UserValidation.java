@@ -1,7 +1,7 @@
-/*
-    Author: Logan Jackson
-    Description: UserValidation class is a class which contains
-    methods to validate user's inputs.
+/**
+ *  @author Logan Jackson
+ *  Description: UserValidation class is a class which contains
+ *  methods to validate user's inputs.
 */
 
 package me.logan.senpagamemory;
@@ -11,10 +11,17 @@ import java.util.Scanner;
 
 public class UserValidation {
 
-    /*
-        Description: A method to check if user input is between two
-        numbers. Used to validate user input throughout the program.
+    /**
+     * Description: A method to check if user input is between two
+     * numbers. Used to validate user input throughout the program.
+     *
+     * @param userInput
+     * @param numberRangeOne
+     * @param numberRangeTwo
+     * @return number
     */
+
+
     public static int checkNumber(Scanner userInput, int numberRangeOne, int numberRangeTwo) {
         for (; ; ) {
             if (!userInput.hasNextInt()) {
