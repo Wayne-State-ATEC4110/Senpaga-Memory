@@ -1,13 +1,17 @@
-
-public class User {
+/**
+ * 
+ * @author Calvin Brooks
+ * Description: Class for storing user data from DB
+ */
+public class UserMaster {
 	private String userID;
 	private String firstName;
 	private String lastName;
 	
 	
-	public User() {
+	public UserMaster() {
 	}
-	public User(String userID, String firstName, String lastName) {
+	public UserMaster(String userID, String firstName, String lastName) {
 		this.userID = userID;
 		this.firstName = firstName;
 		this.lastName = lastName;

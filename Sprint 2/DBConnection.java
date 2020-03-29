@@ -1,3 +1,8 @@
+/**
+ * @author Calvin Brooks
+ * Description: This class is meant for connecting to the DB
+ * 
+*/
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,7 +28,6 @@ public class DBConnection {
 	        connect = (Connection) DriverManager
 				      .getConnection("jdbc:mysql://senpaga.cvxtfkduma0q.us-east-2.rds.amazonaws.com:3306/senpaga?"
 				          + "user=admin&password=password");
-	        System.out.println(connect);
 	    }
 		return connect;
 	}
