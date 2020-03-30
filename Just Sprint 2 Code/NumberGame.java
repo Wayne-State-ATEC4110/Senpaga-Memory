@@ -11,7 +11,7 @@ import java.io.IOException;
 public class NumberGame {
 	private int numberAmt = 0;
 	private int numberType = 0;
-	private int correctAnswers = 0;
+	public int correctAnswers = 0;
 	private ArrayList<String> randomNumbers = new ArrayList<String>();
 	private ArrayList<String> answers = new ArrayList<String>();
 	
