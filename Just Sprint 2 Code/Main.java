@@ -79,8 +79,12 @@ public class Main {
 			if(opt.getOption() == 3)
 			{
 				//Christine's Section
-				UserInterface ui = new UserInterface();
-				ui.optionsMenu();
+				MenuSystem gameMenu = MenuSystem.getInstance();
+		
+				System.out.println("\nWelcome to Senpaga Memory: Memorize Words!\n "
+					+ "\nSelect a Game Mode from the options below.\n");
+		
+				gameMenu.gameModeMenu();
 			}
 			
 			if(opt.getOption() == 4)
