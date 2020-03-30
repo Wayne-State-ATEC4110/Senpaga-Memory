@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Options {
-    private String[] optionList = new String[6]; //may have to change this
+    private String[] optionList = new String[8]; //may have to change this
     private int option;
 
     public Options() {
@@ -10,7 +10,9 @@ public class Options {
         optionList[2] = "3) Memorize Words";
         optionList[3] = "4) Memorize Numbers";
         optionList[4] = "5) Choose a User";
-        optionList[5] = "6) Quit";
+        optionList[5] = "6) Add a User";
+        optionList[6] = "7) Delete a User";
+        optionList[7] = "8) Quit";
     }
 
     public int getOption() {

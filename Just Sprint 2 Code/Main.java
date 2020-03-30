@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-
+import java.util.Scanner;
 //authors: Ervin, Calvin, Christine, Logan
 
 public class Main {
@@ -18,7 +18,7 @@ public class Main {
 		
 		
 		
-		while(opt.getOption() != 6) //this is a loop that will keep on going until the quit option is chosen
+		while(opt.getOption() != 8) //this is a loop that will keep on going until the quit option is chosen
 		{
 			opt.print();
 			opt.selectOption();
@@ -101,6 +101,24 @@ public class Main {
 				select.switchUser();
 			}
 			
+			if(opt.getOption() == 6) //Add User Option
+			{
+				UserMasterDAO userMasterDAO = new UserMasterDAO();
+				Scanner input = new Scanner(System.in);
+				System.out.print("Please enter a username: ");
+				String user = input.nextLine();
+				UserMaster userObj = new UserMaster(user);
+				userMasterDAO.add(userObj);	
+			}
+			
+			if(opt.getOption() == 7) //Delete User Option
+			{
+				UserMasterDAO userMasterDAO = new UserMasterDAO();
+				Scanner input = new Scanner(System.in);
+				System.out.print("Please enter username to delete: ");
+				String user = input.nextLine();
+				userMasterDAO.delete(user);
+			}
 			
 			
 		}
