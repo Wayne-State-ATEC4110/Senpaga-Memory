@@ -178,4 +178,3 @@ otono
 verano 
 estacion
 invierno
-
