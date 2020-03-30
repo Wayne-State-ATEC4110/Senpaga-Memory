@@ -15,7 +15,8 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private DBConnection dbConnection = null;
+	//private DBConnection dbConnection = null;
+	private ManagingUserDB muConnection = null;
 	
 	/**
      * Description: method to create user table
@@ -23,8 +24,8 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
     */
 	@Override
 	public void createTable() throws SQLException {
-		dbConnection = new DBConnection();
-		connect = dbConnection.connect_func();
+		//dbConnection = new DBConnection();
+	//	connect = dbConnection.connect_func();
 		System.out.println(connect);
 		Statement statement = null;
 		String sqlstmt = "CREATE TABLE IF NOT EXISTS User " +
@@ -33,7 +34,6 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
                 " PRIMARY KEY ( userID ))"; 
         statement.executeUpdate(sqlstmt);
         statement.close();
-        dbConnection.disconnect();
 	}
 	
 	/**
@@ -44,10 +44,7 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
 	@Override
 	public UserMaster get(String ID) throws SQLException {
 		UserMaster userMaster = new UserMaster();
-		createTable();
-		dbConnection = new DBConnection();
-		connect = dbConnection.connect_func();
-        String sql = "SELECT * FROM User WHERE userID = ?";
+        String sql = "SELECT * FROM Users WHERE UserNames = ?";
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         preparedStatement.setString(1, ID);
          
@@ -55,15 +52,10 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
          
         if (resultSet.next()) {
             String userID = resultSet.getString("userID");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-             
-            userMaster = new UserMaster(userID, firstName, lastName);
         }
         
         resultSet.close();
         preparedStatement.close();
-        dbConnection.disconnect();
          
         return userMaster;
     }
@@ -74,18 +66,13 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
     */
 	@Override
 	public void add(UserMaster userMaster) throws SQLException {
-		createTable();
-		dbConnection = new DBConnection();
-		connect = dbConnection.connect_func(); 
-		String sql = "insert into  UserMaster(userID, firstName, lastName) values (?, ?, ?)";
+		muConnection = new ManagingUserDB();
+		connect = muConnection.connect();
+		String sql = "insert into  Users(UserNames) values (?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setString(1, userMaster.getUserID());
-		preparedStatement.setString(2, userMaster.getFirstName());
-		preparedStatement.setString(3, userMaster.getLastName());
-		
+		preparedStatement.setString(1, userMaster.getUserNames());
 		preparedStatement.executeUpdate();
         preparedStatement.close();
-        dbConnection.disconnect();
     }
 	
 	/**
@@ -94,19 +81,16 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
     */
 	@Override
 	public void update(UserMaster userMaster) throws SQLException {
-		createTable();
-		dbConnection = new DBConnection();
-		connect = dbConnection.connect_func();
-		String sql = "update usermaster set userType = ?, firstName = ?, lastName = ? where userID = ?";
+		connect = muConnection.connect();
+		String sql = "update Users set UserNames = ? where UserNames = ?";
        
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, userMaster.getUserID());
-        preparedStatement.setString(1, userMaster.getFirstName());
-        preparedStatement.setString(1, userMaster.getLastName());
-         
+        preparedStatement.setString(1, userMaster.getUserNames());
+        preparedStatement.setString(2, userMaster.getUserNames());
+        
         preparedStatement.executeUpdate();
         preparedStatement.close();
-        dbConnection.disconnect();
+    //    dbConnection.disconnect();
     }
 	
 	/**
@@ -114,18 +98,16 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
      *
     */
 	@Override
-	public void delete(String userID) throws SQLException {
-		createTable();
-		dbConnection = new DBConnection();
-		connect = dbConnection.connect_func();
-        String sql = "DELETE FROM usermaster WHERE userID = ?";        
+	public void delete(String UserNames) throws SQLException {
+		muConnection = new ManagingUserDB();
+		connect = muConnection.connect();
+        String sql = "DELETE FROM Users WHERE UserNames = ?";        
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, userID);
+        preparedStatement.setString(1, UserNames);
          
         preparedStatement.executeUpdate();
         preparedStatement.close(); 
-        dbConnection.disconnect();
     }
 	
 	/**
@@ -136,25 +118,27 @@ public class UserMasterDAO implements UserDAO<UserMaster> {
 	@Override
 	public List<UserMaster> getAll() throws SQLException {
         List<UserMaster> userList = new ArrayList<UserMaster>();
-        createTable();
-		dbConnection = new DBConnection();
-		connect = dbConnection.connect_func();
-        String sql = "SELECT * FROM usermaster";           
+       // createTable();
+		//dbConnection = new DBConnection();
+		//connect = dbConnection.connect_func();
+        muConnection = new ManagingUserDB();
+        connect = muConnection.connect();
+        String sql = "SELECT * FROM Users";           
         statement =  (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
          
         while (resultSet.next()) {
-        	String userID = resultSet.getString("userID");
-        	String firstName = resultSet.getString("firstName");
-        	String lastName = resultSet.getString("lastName");
+        	String userID = resultSet.getString("UserNames");
+        	//String firstName = resultSet.getString("firstName");
+        	//String lastName = resultSet.getString("lastName");
              
-            UserMaster userMaster = new UserMaster(userID, firstName, lastName);
-            userList.add(userMaster);
+            //UserMaster userMaster = new UserMaster(userID, firstName, lastName);
+            //userList.add(userMaster);
             
         }        
         resultSet.close();
         statement.close();         
-        dbConnection.disconnect();   
+    //    dbConnection.disconnect();   
         return userList;
     }
 
