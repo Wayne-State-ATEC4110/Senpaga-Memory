@@ -21,10 +21,6 @@ public class Main {
             {
                 MemorizeNames nameGame = new MemorizeNames();
                 nameGame.startGame();
-                /*nameGame.populateArrayWithNames();
-                nameGame.printNames();
-                nameGame.guessNames();
-                nameGame.printNumberCorrect();*/
             }
 
             if(opt.getOption() == 2)
