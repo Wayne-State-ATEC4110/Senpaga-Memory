@@ -94,11 +94,11 @@ public class Main {
 			{
 				//Christine's Section
 				MenuSystem gameMenu = MenuSystem.getInstance();
-		
+				
 				System.out.println("\nWelcome to Senpaga Memory: Memorize Words!\n "
-					+ "\nSelect a Game Mode from the options below.\n");
-		
-				gameMenu.gameModeMenu();
+						+ "\nSelect a Game Mode from the options below.\n");
+				
+				gameMenu.fileSelectMenu();
 			}
 			
 			if(opt.getOption() == 4)
