@@ -24,12 +24,27 @@ public class Correct {
 	
 
 	
-	public void input (int packNumber, int cardNumber) throws IOException { //getting the input from the user
+	public void input (int packNumber, int cardNumber, boolean bool) throws IOException { //getting the input from the user
 		Cards correctCard = new Cards();
 		int beginPack = 1;
 		Scanner sc = new Scanner(System.in);
 		
+		ClearScreen.Clear();
+		
 		FileWriter userWriter = new FileWriter("userAttempt.txt");
+		
+		Cards uiUser = new Cards();
+		
+		int length;
+		
+		if(bool) //set the length depending on whether or not you're using joker cards or not
+		{
+			length = uiUser.jokerCards.length;
+		}
+		else
+		{
+			length = uiUser.cards.length;
+		}
 		
 		
 		System.out.println("Input Your Answers\n");
@@ -37,7 +52,7 @@ public class Correct {
 		for(int i = 0; i < packNumber ; i++)
 		{
 			System.out.println("Pack " + beginPack);
-			for(int j = 0; j < cardNumber; j++)
+			for(int j = 0; j < length; j++)
 			{
 				System.out.print("Card " + (j+1) + ": ");
 				//constantly add user input to text file

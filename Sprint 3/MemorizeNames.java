@@ -4,7 +4,6 @@
  * for everything needed for the name memorization game.
 */
 
-package me.logan.senpagamemory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,6 +19,8 @@ public class MemorizeNames {
     private ArrayList<String> names = new ArrayList<String>();
     private ArrayList<String> populatedArray = new ArrayList<String>();
     private ArrayList<String> namesGuessed = new ArrayList<String>();
+    
+    int correctness = 0;
 
 
     /**
@@ -209,6 +210,7 @@ public class MemorizeNames {
         for (int i = 0; i < namesGuessed.size(); i++) {
             if (namesGuessed.get(i).equals(names.get(i))) {
                 correct++;
+                this.correctness++; //Ervin added this line
             }
         }
 

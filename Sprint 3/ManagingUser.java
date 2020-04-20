@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,9 @@ public class ManagingUser {
 	String word; //this field is mainly used for accessing the strings stored in the database
 	String currentUser; //used for storing the current user in the system
 	
-	public void getCurrentUser(){
+	Leaderboards check = new Leaderboards();
+	
+	public String getCurrentUser() throws IOException{ //was void until Sprint 3
 		
 		ManagingUserDB connector = new ManagingUserDB(); //using the database class to help supplement most of the database operations
 		
@@ -30,12 +33,15 @@ public class ManagingUser {
             
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getString("CurrentUser"));
+                //System.out.println(rs.getString("CurrentUser"));
                 this.currentUser = rs.getString("CurrentUser");
+                check.addMissingUser(this.currentUser);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        return this.currentUser;
     }
 
 	public void getUsers() //prints out every user in the db

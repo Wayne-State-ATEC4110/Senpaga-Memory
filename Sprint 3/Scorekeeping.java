@@ -3,7 +3,7 @@
 
 public class Scorekeeping {
 	
-	double score;
+	int score;
 	
 	void cardsScore(int correct)
 	{
@@ -12,7 +12,7 @@ public class Scorekeeping {
 	
 	void namesScore(double correct)
 	{
-		this.score = (correct * 2.0);
+		this.score = (int)(correct * 2.0);
 	}
 	
 	void numbersScore(int correct)

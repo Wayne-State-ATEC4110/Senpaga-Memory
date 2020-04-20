@@ -10,6 +10,7 @@ public class UI {
 
 	Cards uiUser = new Cards();
 	Correct collect = new Correct();
+	int testLength = 0;
 	
 	public void cardView(int column, boolean bool) throws IOException { //works
 		uiUser.randomize();
@@ -22,11 +23,13 @@ public class UI {
 		{
 			length = uiUser.jokerCards.length;
 			array = uiUser.jokerCards;
+			this.testLength = uiUser.jokerCards.length;
 		}
 		else
 		{
 			length = uiUser.cards.length;
 			array = uiUser.cards;
+			this.testLength = uiUser.cards.length;
 		}
 		
 		FileWriter systemWriter = new FileWriter("systemAttempt.txt"); //works like a charm!

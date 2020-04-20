@@ -56,7 +56,7 @@ public class WordMemorization {
 		}
 		
 		// Control goes to Options Menu.
-		UserInterface.optionsMenu();
+	//	UserInterface.optionsMenu();
 		
 		} catch (IOException e) {
 			e.printStackTrace();
