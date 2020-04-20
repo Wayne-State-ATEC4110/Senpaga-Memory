@@ -154,10 +154,9 @@ public class Leaderboards {
     }
     
     //Ervin Colston
-    public void addMissingUser(String currentUser) throws IOException { //this will add a leaderboards entry for the current user who exists in the database 
-    	//but doesn't have a leaderboards slot
-    	//the parameter of this method is the this.currentuser string that will be located in the Main 
-    	//this method will be evoked in the getCurrentUser() method in the ManagingUser class because that's the only place it works
+    public void addMissingUser(String currentUser) throws IOException { //this will notify the user to add the required user to the leaderboards
+    	//files
+    	
     	
     	currentUser = currentUser.replaceAll("\\s", ""); //get rid of any potential white space so that the hashmap can work smoothly later
     	
@@ -165,7 +164,8 @@ public class Leaderboards {
     	
     	int itr = 1;
     	
-    	while(itr != 6) {
+    	
+    	for(itr = 1; itr <6; itr++) {
     		
     		
     		if (itr == 1) {
@@ -180,6 +180,7 @@ public class Leaderboards {
                 file = new File(NUMBERS_LEADERBOARD_PATH);
             }
     		
+    		leaderboard.clear();
 	    	boolean flag = false;
 	    	try {
 	            Scanner reader = new Scanner(file);
@@ -200,32 +201,20 @@ public class Leaderboards {
 	            	}
 	            }
 	            
-	            if(!flag) //make sure to append to a file or else all the content will be deleted
+	            if(!flag || leaderboard.isEmpty())
 	            {
-	            	
-	            	if(leaderboard.isEmpty()){
-	            		FileWriter fileWriter = new FileWriter(file, true);
-	                	fileWriter.write(currentUser + " 0"); //need a newline here
-	                	fileWriter.close();
-	            	}
-	            	
-	            	else {
-	            		writeMissing(currentUser, file);
-	            	}
+	            	System.out.println("You need to add your username with no spaces and a score of 0 to the leaderboard files or else"
+	            			+ "you won't get a leaderboard score.\n");
+	            	break;
 	            }
 	            
 	        } catch(FileNotFoundException e) {
 	            System.out.println("File not found!");
 	            e.printStackTrace();
 	        }
-	    	 itr++;
+	    	 //itr++;
     	}
     }
     
-    public void writeMissing(String currentUser, File file) throws IOException //Ervin Colston
-    {
-    	FileWriter fileWriter = new FileWriter(file, true);
-    	fileWriter.write("\n" + currentUser + " 0"); //need a newline here
-    	fileWriter.close();
-    }
+
 }

@@ -21,6 +21,7 @@ public class Main {
 		
 		while(opt.getOption() != 9) //this is a loop that will keep on going until the quit option is chosen
 		{
+			
 			opt.print();
 			opt.selectOption();
 			
