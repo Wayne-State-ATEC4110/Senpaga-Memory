@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -107,12 +108,27 @@ public class MemorizeWordsGame {
 	        }
 	        Leaderboards leader = new Leaderboards();
 	        leader.updateLeaderboards((int)score, 4);
+	        Scorekeeping score1 = new Scorekeeping();
+	        score1.wordsScore((int)score); //for scoring (Ervin)
+	        
+	        //Training session
+	        ManagingUser currentUser = new ManagingUser();
+	        String current = currentUser.getCurrentUser();
+	        Score scoreObj = new Score(current,(int)score);
+	        ScoreDAO scoreDAO = new ScoreDAO("words");
+	        try {
+				scoreDAO.save(scoreObj);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        
 	        double result = (score / MenuSystem.gameArrayList.size()) * 100;
 	        String stringResult = ("You scored: " + result + "%\n");
 	        System.out.println(stringResult + "\n");
+	        System.out.println("The score is: " + score1.score);
 	        return stringResult;
-		
+	        
 	}
 	
 		
