@@ -3,8 +3,8 @@ through the command line.
 
 # Steps
 
-* Download the sen2 folder and do not remove any of the files held within
+* Download the Sprint 3 Jar Executable folder and do not remove any of the files held within
 * Open your commandline
-* cd the path that contains the sen2.jar file
-* Type in the command "java -jar sen2.jar"
+* cd the path that contains the SenpagaMemory.jar file
+* Type in the command "java -jar SenpagaMemory.jar"
 * Enjoy the program
