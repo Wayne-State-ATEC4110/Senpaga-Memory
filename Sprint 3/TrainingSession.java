@@ -90,6 +90,6 @@ public class TrainingSession {
 			+ numberScoreStr);
 						
 		}
-		System.out.println();
+		System.out.println(); 
 	}
 }
