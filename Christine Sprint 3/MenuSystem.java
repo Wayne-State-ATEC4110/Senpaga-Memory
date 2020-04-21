@@ -1,5 +1,6 @@
-package randomWordGame;
+package sprint3;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -46,8 +47,9 @@ public class MenuSystem{
 	 * New UI implemented in Sprint 2.
 	 * Optional menu the user can access before they begin the game to manage words in 
 	 * the SenpagaUserWords.txt.
+	 * @throws IOException 
 	 */
-	public static void wordManagementMenu() {
+	public static void wordManagementMenu() throws IOException {
 		System.out.println("Select from the options below.\n");
 		System.out.println("1) Add Words \n2) Delete Words \n3) Quit\n");
 		choice = scan.nextInt();
@@ -77,8 +79,9 @@ public class MenuSystem{
 	 * Sprint 1/2
 	 * New UI implemented in Sprint 2
 	 * User selects their file(s).
+	 * @throws IOException 
 	 */
-	public static void fileSelectMenu() {
+	public static void fileSelectMenu() throws IOException {
 		System.out.println("Select your file(s) from the options below.");
 		System.out.println("1) Default \n2) User \n3) Foreign \n4) Deafult + User"
 				+ "\n5) Default + Foreign \n6) User + Foreign \n7) All "
@@ -140,8 +143,9 @@ public class MenuSystem{
 	 * Sprint 2
 	 * User is asked if they want to manage their SenpagaUserWords.txt file before they set
 	 * their difficulty.
+	 * @throws IOException 
 	 */
-	public static void continuePrompt() {
+	public static void continuePrompt() throws IOException {
 		System.out.println("Would you like to manage your words before continuing? "
 				+ "\n1) Yes \n2) No\n");
 		choice= scan.nextInt();
@@ -162,8 +166,9 @@ public class MenuSystem{
 	 * Sprint 2/3
 	 * Difficulty Menu allows users to set their difficulty based on word count.
 	 * InterruptedException thrown due to control going to the timerSelect function.
+	 * @throws IOException 
 	 */
-	public static void difficultyMenu() throws InterruptedException {
+	public static void difficultyMenu() throws InterruptedException, IOException {
 		gameArrayList.clear();
 		
 		System.out.println("Select a Difficulty from the options below.\n");
@@ -214,9 +219,10 @@ public class MenuSystem{
 	 * User is asked if they want to be timed before they start their game.
 	 * Throws InterruptedException because of countDown function in MemorizeWordsGame class.
 	 * Control goes to startGame function within said class.
+	 * @throws IOException 
 	 */
 		
-	public static void timerSelect() throws InterruptedException {
+	public static void timerSelect() throws InterruptedException, IOException {
 		
 		System.out.println("Would you like to be timed? "
 				+ "\n1) Yep, I'm pretty competitive. MLG status actually."
