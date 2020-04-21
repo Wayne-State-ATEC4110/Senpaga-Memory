@@ -15,6 +15,9 @@ public class DBConnection {
 	 private Statement statement = null;
 	 private PreparedStatement preparedStatement = null;
 	 private ResultSet resultSet = null;
+	 String jdbcURL = "jdbc:mysql://senpaga.cvxtfkduma0q.us-east-2.rds.amazonaws.com:3306/senpaga?autoReconnect=true&useSSL=false";
+	 String username = "admin";
+	 String password = "password";
 	public Connection connect_func() throws SQLException {
 		
 	    if (connect == null || connect.isClosed()) {
@@ -26,8 +29,7 @@ public class DBConnection {
 	        }
 	        
 	        connect = (Connection) DriverManager
-				      .getConnection("jdbc:mysql://senpaga.cvxtfkduma0q.us-east-2.rds.amazonaws.com:3306/senpaga?"
-				          + "user=admin&password=password");
+				      .getConnection(jdbcURL, username, password);
 	    }
 		return connect;
 	}

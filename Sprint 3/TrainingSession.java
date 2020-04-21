@@ -1,7 +1,17 @@
+/**
+ * @author Calvin Brooks
+ * Description: This class is meant for displaying user training sessions
+ * 
+*/
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Description: method to display training session
+ *
+*/
 public class TrainingSession {
 	public void showTrainingSession(String user) throws SQLException {
 		int max;
@@ -26,9 +36,13 @@ public class TrainingSession {
 		maxArray[2] = nameScore.size();
 		maxArray[3] = numberScore.size();
 		max = maxArray[0];
+		
+		//finding largest list and using it as max value
 		for(int i = 1; i < maxArray.length; i++)
 			if(max < maxArray[i])
 				max = maxArray[i];
+		System.out.println();
+		System.out.println("User: " + user);
 		System.out.println("Cards" + "\t" + "Words" + "\t" + "Names" + "\t" + "Numbers");
 		System.out.println("-----" + "\t" + "-----" + "\t" + "-----" + "\t" + "-------");
 		for(int i = 0; i < max; i++) {
@@ -37,7 +51,7 @@ public class TrainingSession {
 			String nameScoreStr = "";
 			String numberScoreStr = "";
 			if ((cardScore != null) && !cardScore.isEmpty()) {
-				if(cardScore.size() <= max)
+				if(cardScore.size() < max)
 					cardScoreStr = Integer.toString(cardScore.get(i).getScore());
 				else
 					cardScoreStr = "-";
@@ -74,8 +88,8 @@ public class TrainingSession {
 			
 			System.out.println(cardScoreStr + "\t" + wordScoreStr + "\t" + nameScoreStr + "\t" 
 			+ numberScoreStr);
-				
-				
+						
 		}
+		System.out.println();
 	}
 }
